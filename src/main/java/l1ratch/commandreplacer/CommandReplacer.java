@@ -22,7 +22,7 @@ public class CommandReplacer extends JavaPlugin {
         getCommand("commandreplacer").setExecutor(new CommandBlockerCommand(this));
     }
 
-    private void loadCustomCommands() {
+    void loadCustomCommands() {
         customCommands = new ArrayList<>();
         for (String commandKey : getConfig().getConfigurationSection("commands").getKeys(false)) {
             String aliasesKey = "commands." + commandKey + ".aliases";
