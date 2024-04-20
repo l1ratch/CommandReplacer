@@ -19,7 +19,7 @@ public class CommandReplacer extends JavaPlugin {
         loadCustomCommands();
 
         // Регистрация слушателя команд с высоким приоритетом
-        getCommand("commandblocker").setExecutor(new CommandBlockerCommand(this));
+        getCommand("commandreplacer").setExecutor(new CommandBlockerCommand(this));
     }
 
     void loadCustomCommands() {
@@ -27,7 +27,7 @@ public class CommandReplacer extends JavaPlugin {
         for (String commandKey : getConfig().getConfigurationSection("commands").getKeys(false)) {
             String aliasesKey = "commands." + commandKey + ".aliases";
             List<String> aliases = getConfig().getStringList(aliasesKey);
-            String text = getConfig().getString("commands." + commandKey + ".text");
+            String text = getConfig().getString("commands." + commandKey + ".text").replace('&', '\u00A7');
             List<String> commandList = getConfig().getStringList("commands." + commandKey + ".command");
             customCommands.add(new CustomCommand(aliases, text, commandList));
         }
@@ -86,18 +86,18 @@ class CommandBlockerCommand implements org.bukkit.command.CommandExecutor {
 
     @Override
     public boolean onCommand(CommandSender sender, Command command, String label, String[] args) {
-        if (!sender.hasPermission("commandblocker.reload")) {
+        if (!sender.hasPermission("commandreplacer.reload")) {
             sender.sendMessage("You don't have permission to use this command.");
             return true;
         }
 
         if (args.length == 0) {
-            sender.sendMessage("Usage: /commandblocker reload");
+            sender.sendMessage("Usage: /commandreplacer reload");
             return true;
         }
 
         if (args[0].equalsIgnoreCase("reload")) {
-            if (!sender.hasPermission("commandblocker.reload")) {
+            if (!sender.hasPermission("commandreplacer.reload")) {
                 sender.sendMessage("You don't have permission to reload the configuration.");
                 return true;
             }

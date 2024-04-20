@@ -1,4 +1,9 @@
 name: CommandReplacer
 version: '${project.version}'
 main: l1ratch.commandreplacer.CommandReplacer
-api-version: '1.19'
+commands:
+  commandreplacer:
+    description: Reload the CommandReplacer plugin configuration.
+    usage: /commandreplacer reload
+    permission: commandreplacer.reload
+    aliases: [ cr ]

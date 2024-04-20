@@ -1,18 +1,21 @@
+# CommandReplacer by l1ratch
+# Подробнее: https://github.com/l1ratch/CommandReplacer
+
 commands:
   versions:
-    aliases: [ ver, v ]
-    text: "версия сервера 1.1.5"
+    aliases: [ ver, vers ]
+    text: "&aверсия сервера 1.1.5"
     command:
       - "say Hello!"
       - "time set day"
   plugin:
     aliases: [ pl ]
-    text: "Плагинов нет"
+    text: "&cПлагинов нет"
     command:
       - "plugin list"
   players:
     aliases: [ who, online ]
-    text: "Сейчас онлайн: %online_players%"
+    text: "&eСейчас онлайн: %online_players%"
     command:
       - "list"
   time:
