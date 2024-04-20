@@ -1,0 +1,21 @@
+commands:
+  versions:
+    aliases: [ ver, v ]
+    text: "версия сервера 1.1.5"
+    command:
+      - "say Hello!"
+      - "time set day"
+  plugin:
+    aliases: [ pl ]
+    text: "Плагинов нет"
+    command:
+      - "plugin list"
+  players:
+    aliases: [ who, online ]
+    text: "Сейчас онлайн: %online_players%"
+    command:
+      - "list"
+  time:
+    aliases: [ currenttime, now ]
+    command:
+      - "time query daytime"
