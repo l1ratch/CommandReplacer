@@ -22,12 +22,15 @@ public class CommandReplacer extends JavaPlugin {
         getCommand("commandreplacer").setExecutor(new CommandBlockerCommand(this));
     }
 
-    void loadCustomCommands() {
+    private void loadCustomCommands() {
         customCommands = new ArrayList<>();
         for (String commandKey : getConfig().getConfigurationSection("commands").getKeys(false)) {
             String aliasesKey = "commands." + commandKey + ".aliases";
             List<String> aliases = getConfig().getStringList(aliasesKey);
-            String text = getConfig().getString("commands." + commandKey + ".text").replace('&', '\u00A7');
+            String text = getConfig().getString("commands." + commandKey + ".text");
+            if (text != null) {
+                text = text.replace('&', '\u00A7'); // Замена символа & на §
+            }
             List<String> commandList = getConfig().getStringList("commands." + commandKey + ".command");
             customCommands.add(new CustomCommand(aliases, text, commandList));
         }

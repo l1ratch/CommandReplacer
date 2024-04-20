@@ -1,0 +1,9 @@
+name: CommandReplacer
+version: '1.0'
+main: l1ratch.commandreplacer.CommandReplacer
+commands:
+  commandreplacer:
+    description: Reload the CommandReplacer plugin configuration.
+    usage: /commandreplacer reload
+    permission: commandreplacer.reload
+    aliases: [ cr ]
